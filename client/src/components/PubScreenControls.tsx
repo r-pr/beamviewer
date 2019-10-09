@@ -14,7 +14,7 @@ export const PubScreenControls: React.FC<IProps> = (props) => {
     const pauseDisabled = props.streamState !== "active";
     const resumeDisabled = props.streamState !== "paused";
     return (
-        <div className="row" style={{marginTop: "2em"}}>
+        <div className="row" style={{marginTop: "2em", marginBottom: "1em"}}>
             <div className="col-sm-4">
                 <button
                     className="btn btn-block btn-warning"

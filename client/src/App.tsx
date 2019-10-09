@@ -4,6 +4,7 @@ import "./App.css";
 import PubScreen from "./components/PubScreen";
 import SubScreen from "./components/SubScreen";
 import InitialScreen from "./InitialScreen";
+import Footer from "./components/Footer";
 import { IUserAppMode } from "./interfaces";
 
 interface IState {
@@ -69,10 +70,13 @@ export default class App extends React.Component<{}, IState> {
             }
         } else {
             return (
-                <InitialScreen
-                    onDecision={this.onUserDecision}
-                    error={this.state.error}
-                />
+                <React.Fragment>
+                    <InitialScreen
+                        onDecision={this.onUserDecision}
+                        error={this.state.error}
+                    />
+                    <Footer/>
+                </React.Fragment>
             );
         }
     }
