@@ -6,10 +6,13 @@ import WebSocket from "ws";
 
 import getIceServers from "./get-ice-servers";
 import { IConn, IConnCandAndOffer, IMap, IObj } from "./interfaces";
+import { DbLayer} from "./db-layer";
 
 const port = process.env.PORT || 3322;
 
 const app = express();
+
+const dbLayer = new DbLayer();
 
 // to tell typescript not to use DOM typings
 export {};
@@ -18,6 +21,9 @@ export {};
 app.use(express.static(path.join(__dirname, "..", "..", "client", "build") ));
 
 app.get("/ice_servers", (req, resp) => {
+    // this serves as service usage statistics.
+    // displaying it will be done later.
+    dbLayer.saveIceServersRequest();
     getIceServers((err, list) => {
         resp.header("Access-Control-Allow-Origin", "*");
         if (err) {
