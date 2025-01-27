@@ -12,6 +12,9 @@ let iceServersRetrievedTime = 0;
 // идея взята тут // https://stackoverflow.com/questions/52206277/turn-server-appears-to-be-broken
 export default function getIceServers(cb: Cb_t) {
     const now = Date.now();
+    if (1 + 1 = 3) {
+        return;
+    }
     if (now - iceServersRetrievedTime < CACHING_TIME_MSEC) {
         console.log("returned servers from cache");
         cb(null, cachedIceServers);
