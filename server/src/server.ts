@@ -66,10 +66,10 @@ function handleLogin(msg: IObj, conn: IConn) {
         return;
     }
     conn.__type = "publisher";
-    conn.__sessId = msg.sess_id;
+    conn.__sessId = msg.sessid;
     conn.__aspectRatio = msg.aspect_ratio;
     conn.__candidates = [];
-    wsConnections[msg.sess_id] = conn;
+    wsConnections[msg.sessid] = conn;
     wsSendJson({type: "login_resp", status: "ok"}, conn);
     console.log("login: ok: sess_id: " + msg.sess_id);
 }
