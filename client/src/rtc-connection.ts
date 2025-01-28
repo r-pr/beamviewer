@@ -14,7 +14,7 @@ export class PublisherConnection extends EventEmitter {
         this.rtcConnection = new RTCPeerConnection({iceServers});
         (this.rtcConnection as any).addStream(stream);
         this.rtcConnection.onicecandidate = (event: any) => {
-            if (event.candidate) {
+            
                 this.emit("candidate", event.candidate);
             }
         };
